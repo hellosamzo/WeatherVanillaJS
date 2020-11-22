@@ -28,6 +28,8 @@ window.addEventListener('load', ()=> {
                 tempDegree.textContent = temp;
                 tempDesc.textContent = description;
                 locTimezone.textContent = name;
+                // set icon
+                setIcons(); //  need to come up with a method to decide which icon to use
             })
 
         });
@@ -36,4 +38,11 @@ window.addEventListener('load', ()=> {
     // {
     //     h1.textContent("ERROR! Browser does not support geolocation or somethings blocking it.")
     // }
+
+    function setIcons()
+    {
+        var skycons = new Skycons({"color": "white"});
+        skycons.add(document.getElementById("icon"), Skycons.PARTLY_CLOUDY_DAY);
+        skycons.play();
+    }
 });

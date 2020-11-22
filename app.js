@@ -1,10 +1,11 @@
+let locTimezone = document.querySelector('.location-timezone');
+
 // when page loads, this function runs
 window.addEventListener('load', ()=> {
     let long;
     let lat;
     let tempDesc = document.querySelector('.temp-description');
     let tempDegree = document.querySelector('.temp-degree');
-    let locTimezone = document.querySelector('.location-timezone');
 
     if(navigator.geolocation)
     {
@@ -44,5 +45,17 @@ window.addEventListener('load', ()=> {
         var skycons = new Skycons({"color": "white"});
         skycons.add(document.getElementById("icon"), Skycons.PARTLY_CLOUDY_DAY);
         skycons.play();
+    }
+});
+
+locTimezone.addEventListener('click', ()=> {
+    var elem = document.getElementById("location");
+    if(elem.style.color == "cyan")
+    {
+        elem.style.color = "white";
+    }
+    else 
+    {
+        elem.style.color = "cyan";
     }
 });

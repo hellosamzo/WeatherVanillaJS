@@ -4,7 +4,7 @@ window.addEventListener('load', ()=> {
     let lat;
     let tempDesc = document.querySelector('.temp-description');
     let tempDegree = document.querySelector('.temp-degree');
-    let timezone = document.querySelector('.location-timezone');
+    let locTimezone = document.querySelector('.location-timezone');
 
     if(navigator.geolocation)
     {
@@ -21,12 +21,13 @@ window.addEventListener('load', ()=> {
             return response.json();
             })
             .then(data =>{
-                console.log(data)
                 const {temp} = data.main;
                 const {description} = data.weather[0];
+                const {name} = data;
                 // set DOM elements using API
                 tempDegree.textContent = temp;
                 tempDesc.textContent = description;
+                locTimezone.textContent = name;
             })
 
         });

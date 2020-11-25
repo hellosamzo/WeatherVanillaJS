@@ -1,11 +1,12 @@
+// global vars
 let locTimezone = document.querySelector('.location-timezone');
+let tempDesc = document.querySelector('.temp-description');
+let tempDegree = document.querySelector('.temp-degree');
 
 // when page loads, this function runs
 window.addEventListener('load', ()=> {
     let long;
     let lat;
-    let tempDesc = document.querySelector('.temp-description');
-    let tempDegree = document.querySelector('.temp-degree');
 
     if(navigator.geolocation)
     {
@@ -59,3 +60,30 @@ locTimezone.addEventListener('click', ()=> {
         elem.style.color = "cyan";
     }
 });
+
+tempDegree.addEventListener('click', ()=> {
+    var elem = document.getElementById("measurement");
+    if(elem.textContent == "C")
+    {
+        tempDegree.textContent = getConversion("F");
+        elem.textContent = "F";
+    }
+    else 
+    {
+        tempDegree.textContent = getConversion("C");
+        elem.textContent = "C";
+    }
+});
+
+function getConversion(measurement)
+{
+// todo
+    if(measurement == "F")
+    {
+        return "45"; // placeholder
+    }
+    else 
+    {
+        return "50"; // placeholder
+    }
+}

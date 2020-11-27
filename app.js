@@ -53,15 +53,16 @@ window.addEventListener('load', ()=> {
 });
 
 locTimezone.addEventListener('click', ()=> {
-    var elem = document.getElementById("location");
-    if(elem.style.color == "cyan")
-    {
-        elem.style.color = "white";
-    }
-    else 
-    {
-        elem.style.color = "cyan";
-    }
+    // var elem = document.getElementById("location");
+    // if(elem.style.color == "cyan")
+    // {
+    //     elem.style.color = "white";
+    // }
+    // else 
+    // {
+    //     elem.style.color = "cyan";
+    // }
+    window.open('http://google.com/search?q='+locTimezone.textContent);
 });
 
 tempDegree.addEventListener('click', ()=> {
@@ -92,4 +93,9 @@ function getConversion(measurement)
     {
         return tempC;
     }
+};
+
+function refreshClick()
+{
+    location.reload();
 }

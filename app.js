@@ -2,6 +2,8 @@
 let locTimezone = document.querySelector('.location-timezone');
 let tempDesc = document.querySelector('.temp-description');
 let tempDegree = document.querySelector('.temp-degree');
+let tempC = 0; // store temp in C
+let tempF = 0; // store temp in F
 
 // when page loads, this function runs
 window.addEventListener('load', ()=> {
@@ -16,8 +18,8 @@ window.addEventListener('load', ()=> {
 
             //const api = 'api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid={apikey}';
 
-            const api = 'http://api.openweathermap.org/data/2.5/weather?q=London&appid={apikey}&units=metric';
-
+            //const api = 'http://api.openweathermap.org/data/2.5/weather?q=London&appid={apikey}&units=metric';
+            
             fetch(api)
                 .then(response =>{
             return response.json();
@@ -28,6 +30,7 @@ window.addEventListener('load', ()=> {
                 const {name} = data;
                 // set DOM elements using API
                 tempDegree.textContent = temp;
+                tempC = tempDegree.textContent;
                 tempDesc.textContent = description;
                 locTimezone.textContent = name;
                 // set icon
@@ -77,13 +80,16 @@ tempDegree.addEventListener('click', ()=> {
 
 function getConversion(measurement)
 {
-// todo
     if(measurement == "F")
     {
-        return "45"; // placeholder
+        if(tempF == 0)
+        {
+            tempF = tempC * 9/5 + 32;
+        }
+        return tempF;
     }
     else 
     {
-        return "50"; // placeholder
+        return tempC;
     }
 }
